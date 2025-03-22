@@ -4,11 +4,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import RSVPForm from "@/components/RSVPForm";
 import AudioPlayer from "@/components/AudioPlayer";
 import CountdownTimer from "@/components/CountdownTimer";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Play } from "lucide-react";
 
 const EternalRomance = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const ref = useRef<HTMLDivElement>(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // Timeline milestones
   const milestones = [
@@ -84,6 +88,22 @@ const EternalRomance = () => {
         audioSrc="https://cdn.pixabay.com/download/audio/2022/01/18/audio_dc39caa7a9.mp3" 
         theme="gold"
       />
+
+      {/* Floating Video Button */}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 2, duration: 0.5 }}
+        className="fixed right-4 bottom-20 z-40"
+      >
+        <button
+          onClick={() => setIsVideoModalOpen(true)}
+          className="bg-gold text-navy p-3 rounded-full shadow-lg hover:bg-gold/80 transition-all duration-300"
+          aria-label="Watch couple's message"
+        >
+          <Play className="w-6 h-6" />
+        </button>
+      </motion.div>
 
       {/* Hero Section with Parallax */}
       <div className="h-screen relative overflow-hidden">
@@ -205,7 +225,7 @@ const EternalRomance = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
             <span className="text-sm uppercase tracking-[0.2em] mb-2 inline-block text-gold">
@@ -268,7 +288,7 @@ const EternalRomance = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
             <span className="text-sm uppercase tracking-[0.2em] mb-2 inline-block text-gold">
@@ -285,7 +305,7 @@ const EternalRomance = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="bg-navy/80 backdrop-blur-sm border border-gold/20 p-6 rounded-lg shadow-xl"
             >
               <h3 className="text-2xl font-bold mb-4 text-gold">Event Details</h3>
@@ -326,7 +346,7 @@ const EternalRomance = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
           >
             <h3 className="text-2xl font-script mb-4 gold-text">#EmilyAndJames2024</h3>
             <p className="text-champagne/80 max-w-lg mx-auto mb-6">
@@ -339,6 +359,50 @@ const EternalRomance = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-navy/90 backdrop-blur-md p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="relative w-full max-w-4xl bg-navy/90 rounded-lg overflow-hidden"
+          >
+            <button
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute top-4 right-4 z-10 text-white hover:text-gold transition-colors duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18"/>
+                <path d="m6 6 12 12"/>
+              </svg>
+            </button>
+            
+            <div className="aspect-video">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=1080&auto=format"
+              >
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="p-6 text-center">
+              <h3 className="text-2xl font-bold mb-2 text-gold">A Message From Us</h3>
+              <p className="text-champagne/80">We're so excited to celebrate our engagement with you. This special moment marks the beginning of our journey together, and we can't wait to share it with our loved ones.</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };

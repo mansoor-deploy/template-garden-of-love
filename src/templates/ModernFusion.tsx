@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import RSVPForm from "@/components/RSVPForm";
 import AudioPlayer from "@/components/AudioPlayer";
 import CountdownTimer from "@/components/CountdownTimer";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Play } from "lucide-react";
 
 const ModernFusion = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +13,7 @@ const ModernFusion = () => {
   const { scrollYProgress } = useScroll();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // Navigation items
   const navItems = [
@@ -135,11 +138,27 @@ const ModernFusion = () => {
         audioSrc="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9575d61323.mp3" 
         theme="modern"
       />
+
+      {/* Floating Video Button */}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 2, duration: 0.5 }}
+        className="fixed right-4 bottom-20 z-40"
+      >
+        <button
+          onClick={() => setIsVideoModalOpen(true)}
+          className="bg-electric-blue text-charcoal p-3 rounded-full shadow-lg hover:bg-electric-blue/80 transition-all duration-300"
+          aria-label="Watch couple's message"
+        >
+          <Play className="w-6 h-6" />
+        </button>
+      </motion.div>
       
       {/* Hero Section */}
       <section 
         id="home" 
-        className="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20"
+        className="relative h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-32"
       >
         <div className="absolute inset-0 bg-charcoal">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1080&auto=format')] bg-cover bg-center opacity-20"></div>
@@ -148,7 +167,7 @@ const ModernFusion = () => {
         
         <motion.div 
           style={{ y: headerY, opacity: opacityHeader, scale: scaleHeader }}
-          className="relative container mx-auto px-4 text-center z-10 mt-16"
+          className="relative container mx-auto px-4 text-center z-10"
         >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -594,12 +613,18 @@ const ModernFusion = () => {
                 <video
                   ref={videoRef}
                   controls
+                  autoPlay
                   className="w-full h-full"
                   poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=1080&auto=format"
                 >
                   <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+              </div>
+              
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-bold mb-2 text-electric-blue">A Message From Us</h3>
+                <p className="text-gray-300">We're thrilled to invite you to celebrate our engagement with us! This special day marks the beginning of our journey together, and we would love for you to be part of it.</p>
               </div>
             </motion.div>
           </motion.div>

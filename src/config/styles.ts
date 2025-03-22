@@ -14,6 +14,11 @@ export const themeConfig = {
       accent: 'text-gold',
       border: 'border-gold/20',
     },
+    mobileAdjustments: {
+      fontSize: 'text-base md:text-lg',
+      headingSize: 'text-3xl md:text-5xl',
+      spacing: 'px-4 py-6 md:px-8 md:py-10',
+    }
   },
   modernFusion: {
     fonts: {
@@ -27,6 +32,11 @@ export const themeConfig = {
       accent: 'text-electric-blue',
       border: 'border-electric-blue/20',
     },
+    mobileAdjustments: {
+      fontSize: 'text-base md:text-lg',
+      headingSize: 'text-3xl md:text-5xl',
+      spacing: 'px-4 py-6 md:px-8 md:py-10',
+    }
   },
   starCrossed: {
     fonts: {
@@ -40,6 +50,11 @@ export const themeConfig = {
       accent: 'text-nebula-pink',
       border: 'border-cosmic-purple/30',
     },
+    mobileAdjustments: {
+      fontSize: 'text-base md:text-lg',
+      headingSize: 'text-3xl md:text-5xl',
+      spacing: 'px-4 py-6 md:px-8 md:py-10',
+    }
   },
   gardenOfLove: {
     fonts: {
@@ -53,6 +68,11 @@ export const themeConfig = {
       accent: 'text-leaf-green',
       border: 'border-leaf-green/20',
     },
+    mobileAdjustments: {
+      fontSize: 'text-lg md:text-xl',
+      headingSize: 'text-4xl md:text-6xl',
+      spacing: 'px-4 py-6 md:px-8 md:py-10',
+    }
   },
 };
 
@@ -79,31 +99,46 @@ export const getThemeContent = (theme: keyof typeof themeConfig) => {
       return {
         title: 'Engagement Celebration',
         subtitle: 'A Timeless Love Story',
-        emphasis: 'gold-text'
+        emphasis: 'gold-text',
+        eventType: 'engagement',
+        messageTitle: 'Our Engagement Announcement'
       };
     case 'modernFusion':
       return {
         title: 'Engagement Party',
         subtitle: 'Modern Love, Modern Celebration',
-        emphasis: 'electric-text'
+        emphasis: 'electric-text',
+        eventType: 'engagement',
+        messageTitle: 'Join Our Celebration'
       };
     case 'starCrossed':
       return {
         title: 'Cosmic Engagement',
         subtitle: 'Written in the Stars',
-        emphasis: 'cosmic-text'
+        emphasis: 'cosmic-text',
+        eventType: 'engagement',
+        messageTitle: 'Our Engagement Invitation'
       };
     case 'gardenOfLove':
       return {
         title: 'Garden Engagement',
         subtitle: 'Growing Our Love Story',
-        emphasis: 'garden-text'
+        emphasis: 'garden-text',
+        eventType: 'engagement',
+        messageTitle: 'We\'re Getting Engaged'
       };
     default:
       return {
         title: 'Engagement',
         subtitle: 'Our Love Story',
-        emphasis: ''
+        emphasis: '',
+        eventType: 'engagement',
+        messageTitle: 'Our Announcement'
       };
   }
+};
+
+// Helper for responsive design
+export const getResponsiveClasses = (theme: keyof typeof themeConfig, type: keyof (typeof themeConfig)[keyof typeof themeConfig]['mobileAdjustments']) => {
+  return themeConfig[theme]?.mobileAdjustments[type] || '';
 };
