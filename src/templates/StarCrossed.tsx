@@ -1,7 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Link } from "react-router-dom";
 import RSVPForm from "@/components/RSVPForm";
 import AudioPlayer from "@/components/AudioPlayer";
 import CountdownTimer from "@/components/CountdownTimer";
@@ -140,17 +139,6 @@ const StarCrossed = () => {
 
   return (
     <div className="bg-deep-space font-futuristic text-starlight relative overflow-hidden">
-      <Link 
-        to="/"
-        className="fixed top-4 left-4 z-50 flex items-center space-x-2 px-4 py-2 bg-deep-space/70 backdrop-blur-md rounded-full border border-cosmic-purple/20 text-starlight transition-all duration-300 hover:bg-cosmic-purple/20"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m12 19-7-7 7-7"/>
-          <path d="M19 12H5"/>
-        </svg>
-        <span>Back to Templates</span>
-      </Link>
-      
       <AudioPlayer 
         audioSrc="https://cdn.pixabay.com/download/audio/2021/04/07/audio_29c9cd1366.mp3" 
         theme="cosmic"
@@ -277,7 +265,7 @@ const StarCrossed = () => {
         </motion.div>
       </section>
       
-      {/* Constellation Map Section */}
+      {/* Constellation Map Section - Improved with interactive elements */}
       <section id="constellation-map" className="relative min-h-screen pt-20 pb-32">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -304,6 +292,52 @@ const StarCrossed = () => {
             viewport={{ once: true }}
             className="relative h-[70vh] md:h-[80vh] max-h-[800px] border border-cosmic-purple/30 rounded-lg overflow-hidden bg-deep-space/50 backdrop-blur-sm mb-20"
           >
+            {/* Interactive cosmos background with moving nebulas */}
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.div 
+                animate={{ 
+                  backgroundPosition: ['0% 0%', '100% 100%'], 
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ 
+                  duration: 120, 
+                  ease: "linear", 
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+                className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1080&auto=format')] bg-cover opacity-20"
+              />
+            </div>
+            
+            {/* Animated nebula clouds */}
+            <motion.div
+              animate={{ 
+                x: [0, 20, 0],
+                y: [0, -10, 0],
+                opacity: [0.2, 0.3, 0.2]
+              }}
+              transition={{ 
+                duration: 30, 
+                ease: "easeInOut", 
+                repeat: Infinity 
+              }}
+              className="absolute top-1/4 left-1/3 w-1/2 h-1/2 rounded-full bg-nebula-pink/5 blur-3xl"
+            />
+            
+            <motion.div
+              animate={{ 
+                x: [0, -30, 0],
+                y: [0, 20, 0],
+                opacity: [0.1, 0.2, 0.1]
+              }}
+              transition={{ 
+                duration: 40, 
+                ease: "easeInOut", 
+                repeat: Infinity 
+              }}
+              className="absolute bottom-1/4 right-1/3 w-1/3 h-1/3 rounded-full bg-cosmic-purple/10 blur-3xl"
+            />
+            
             {/* Stars background */}
             {Array.from({ length: 100 }).map((_, i) => (
               <motion.div
@@ -457,7 +491,7 @@ const StarCrossed = () => {
             <span className="text-xs uppercase tracking-wider mb-2 inline-block text-nebula-pink">
               The Celestial Gathering
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 cosmic-text">Event Details</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 cosmic-text">Engagement Details</h2>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
@@ -468,7 +502,7 @@ const StarCrossed = () => {
               viewport={{ once: true }}
               className="dark-glass-effect border border-cosmic-purple/30 p-8 rounded-lg"
             >
-              <h3 className="text-2xl font-bold mb-6 cosmic-text">Ceremony & Reception</h3>
+              <h3 className="text-2xl font-bold mb-6 cosmic-text">Celebration & Reception</h3>
               
               <div className="space-y-6">
                 <div>

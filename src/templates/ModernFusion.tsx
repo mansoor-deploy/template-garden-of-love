@@ -1,7 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import RSVPForm from "@/components/RSVPForm";
 import AudioPlayer from "@/components/AudioPlayer";
 import CountdownTimer from "@/components/CountdownTimer";
@@ -101,16 +100,7 @@ const ModernFusion = () => {
       <div className="fixed top-0 left-0 w-full z-50 bg-charcoal/80 backdrop-blur-md border-b border-electric-blue/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link 
-              to="/"
-              className="text-electric-blue flex items-center space-x-2 hover:text-white transition-colors duration-300"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m12 19-7-7 7-7"/>
-                <path d="M19 12H5"/>
-              </svg>
-              <span>Back</span>
-            </Link>
+            <div className="text-electric-blue font-medium tracking-wider">Modern Fusion</div>
             
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
@@ -149,7 +139,7 @@ const ModernFusion = () => {
       {/* Hero Section */}
       <section 
         id="home" 
-        className="relative h-screen flex items-center justify-center overflow-hidden"
+        className="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20"
       >
         <div className="absolute inset-0 bg-charcoal">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1080&auto=format')] bg-cover bg-center opacity-20"></div>
@@ -158,7 +148,7 @@ const ModernFusion = () => {
         
         <motion.div 
           style={{ y: headerY, opacity: opacityHeader, scale: scaleHeader }}
-          className="relative container mx-auto px-4 text-center z-10"
+          className="relative container mx-auto px-4 text-center z-10 mt-16"
         >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -167,7 +157,7 @@ const ModernFusion = () => {
             className="inline-block mb-6"
           >
             <div className="text-xs uppercase tracking-[0.5em] py-2 px-4 border border-electric-blue/30 text-electric-blue">
-              Save the Date
+              We're Getting Engaged
             </div>
           </motion.div>
           
@@ -385,7 +375,7 @@ const ModernFusion = () => {
             <span className="text-xs uppercase tracking-wider mb-4 inline-block text-electric-blue border border-electric-blue/30 px-4 py-1">
               The Details
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Event Information</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Engagement Celebration</h2>
             <div className="w-16 h-1 bg-electric-blue mx-auto"></div>
           </motion.div>
           
