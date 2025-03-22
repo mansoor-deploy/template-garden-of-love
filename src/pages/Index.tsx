@@ -1,124 +1,91 @@
 
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  useEffect(() => {
-    document.title = "Premium Engagement Templates";
-  }, []);
-
   const templates = [
     {
-      id: "eternal-romance",
-      title: "Eternal Romance",
-      description: "Timeless elegance & love with a cinematic experience",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=800&auto=format",
-      color: "from-navy to-midnight",
+      name: "Eternal Romance",
+      description: "Timeless elegance with gold accents and cinematic effects",
+      path: "/eternal-romance",
+      bgColor: "bg-navy",
       textColor: "text-gold",
+      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=600&auto=format"
     },
     {
-      id: "modern-fusion",
-      title: "Modern Fusion",
+      name: "Modern Fusion",
       description: "Contemporary minimalism with a personal touch",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=800&auto=format",
-      color: "from-slate to-charcoal",
+      path: "/modern-fusion",
+      bgColor: "bg-charcoal",
       textColor: "text-electric-blue",
+      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=600&auto=format"
     },
     {
-      id: "star-crossed",
-      title: "Star-Crossed",
-      description: "Cosmic & mystical romance under the stars",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format",
-      color: "from-deep-space to-cosmic-purple",
+      name: "Star-Crossed",
+      description: "Cosmic and mystical romance under the stars",
+      path: "/star-crossed",
+      bgColor: "bg-deep-space",
       textColor: "text-starlight",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format"
     },
     {
-      id: "garden-of-love",
-      title: "Garden of Love",
-      description: "Romantic botanical escape with natural elegance",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=800&auto=format",
-      color: "from-leaf-green to-blush-pink",
-      textColor: "text-soft-cream",
-    },
+      name: "Garden of Love",
+      description: "A romantic botanical escape with natural beauty",
+      path: "/garden-of-love",
+      bgColor: "bg-soft-cream",
+      textColor: "text-leaf-green",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=600&auto=format"
+    }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-center max-w-4xl mx-auto mb-16"
-      >
-        <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">
-          Premium Engagement Templates
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-          Celebrate your special moment with beautifully crafted, elegant designs
-          that reflect your unique love story.
-        </p>
-      </motion.div>
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Engagement Website Templates</h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Choose from our collection of premium engagement announcement templates, each designed to tell your unique love story.
+          </p>
+        </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-      >
-        {templates.map((template) => (
-          <motion.div
-            key={template.id}
-            variants={itemVariants}
-            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="relative group overflow-hidden rounded-xl shadow-lg"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br opacity-80 transition-opacity duration-300 group-hover:opacity-90 z-10 bg-black"></div>
-            <img
-              src={template.image}
-              alt={template.title}
-              className="object-cover w-full h-80 transition-transform duration-500 ease-in-out group-hover:scale-110"
-            />
-            <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
-              <h2 className={`text-3xl font-serif font-bold mb-2 ${template.textColor}`}>
-                {template.title}
-              </h2>
-              <p className="text-gray-100 mb-4 opacity-90">
-                {template.description}
-              </p>
-              <Link
-                to={`/${template.id}`}
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white glass-effect hover:bg-white hover:text-gray-900 transition-all duration-300 w-full sm:w-auto"
-              >
-                View Template
+        <div className="grid md:grid-cols-2 gap-8">
+          {templates.map((template, index) => (
+            <motion.div
+              key={template.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
+            >
+              <Link to={template.path} className="block relative rounded-lg overflow-hidden shadow-2xl h-80">
+                <div className={`absolute inset-0 ${template.bgColor} opacity-90 group-hover:opacity-80 transition-opacity duration-300`}>
+                  <img 
+                    src={template.image} 
+                    alt={template.name} 
+                    className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-300 mix-blend-overlay"
+                  />
+                </div>
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-8 text-center">
+                  <h2 className={`text-3xl font-bold mb-3 ${template.textColor}`}>{template.name}</h2>
+                  <p className="text-white mb-6 max-w-xs">{template.description}</p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`px-6 py-2 border-2 ${template.textColor} border-current rounded-full font-medium hover:bg-white/10 transition-colors duration-300`}
+                  >
+                    View Template
+                  </motion.div>
+                </div>
               </Link>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

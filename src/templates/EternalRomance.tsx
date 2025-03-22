@@ -80,16 +80,16 @@ const EternalRomance = () => {
   }
 
   return (
-    <div className="bg-midnight font-serif text-champagne relative overflow-hidden">
+    <div className="bg-midnight font-serif text-champagne relative">
       <Link 
         to="/"
-        className="fixed top-4 left-4 z-50 flex items-center space-x-2 px-4 py-2 bg-navy/70 backdrop-blur-md rounded-full border border-gold/20 text-gold transition-all duration-300 hover:bg-gold/20"
+        className="fixed top-6 left-6 z-50 flex items-center space-x-2 px-4 py-2 bg-navy/70 backdrop-blur-md rounded-full border border-gold/20 text-gold transition-all duration-300 hover:bg-gold/20"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m12 19-7-7 7-7"/>
           <path d="M19 12H5"/>
         </svg>
-        <span>Back to Templates</span>
+        <span>Back to Home</span>
       </Link>
       
       <AudioPlayer 
@@ -134,14 +134,14 @@ const EternalRomance = () => {
           />
         ))}
         
-        <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
+        <div className="relative h-full flex flex-col items-center justify-center px-4 text-center pt-16">
           <motion.span 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-sm md:text-base uppercase tracking-[0.2em] mb-4 text-gold"
           >
-            We're Getting Married
+            We're Getting Engaged
           </motion.span>
           
           <motion.h1 
@@ -159,7 +159,7 @@ const EternalRomance = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl md:text-2xl mb-8"
           >
-            September 14, 2024 • Golden Palace Hotel • New York
+            September 14, 2024 • Engagement Celebration • Golden Palace Hotel
           </motion.div>
           
           <CountdownTimer 
@@ -201,7 +201,7 @@ const EternalRomance = () => {
       </div>
       
       {/* Our Story Timeline Section */}
-      <div id="timeline" className="relative py-20 lg:py-32 overflow-hidden">
+      <div id="timeline" className="relative py-20 lg:py-32">
         <div className="absolute inset-0 bg-navy">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?q=80&w=1080&auto=format')] bg-fixed bg-cover bg-center opacity-10"></div>
         </div>
@@ -264,7 +264,7 @@ const EternalRomance = () => {
       </div>
       
       {/* RSVP Section */}
-      <div className="relative py-20 lg:py-32 overflow-hidden">
+      <div className="relative py-20 lg:py-32">
         <div className="absolute inset-0 bg-navy">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1080&auto=format')] bg-fixed bg-cover bg-center opacity-10"></div>
         </div>
@@ -280,9 +280,9 @@ const EternalRomance = () => {
             <span className="text-sm uppercase tracking-[0.2em] mb-2 inline-block text-gold">
               Join Us
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 gold-text">Celebrate With Us</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 gold-text">Celebrate Our Engagement</h2>
             <p className="text-xl max-w-3xl mx-auto text-champagne/80">
-              We would be honored to have you join us on our special day. Please RSVP by August 14, 2024.
+              We would be honored to have you join us for our engagement celebration. Please RSVP by August 14, 2024.
             </p>
           </motion.div>
           
@@ -298,15 +298,15 @@ const EternalRomance = () => {
               
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-medium mb-2 text-gold">Wedding Ceremony</h4>
-                  <p className="text-champagne/80 mb-1">September 14, 2024 at 2:00 PM</p>
+                  <h4 className="text-lg font-medium mb-2 text-gold">Engagement Celebration</h4>
+                  <p className="text-champagne/80 mb-1">September 14, 2024 at 6:00 PM</p>
                   <p className="text-champagne/80 mb-1">Golden Palace Hotel</p>
                   <p className="text-champagne/80">123 Timeless Avenue, New York</p>
                 </div>
                 
                 <div>
                   <h4 className="text-lg font-medium mb-2 text-gold">Reception</h4>
-                  <p className="text-champagne/80 mb-1">September 14, 2024 at 5:30 PM</p>
+                  <p className="text-champagne/80 mb-1">September 14, 2024 at 7:30 PM</p>
                   <p className="text-champagne/80 mb-1">Golden Palace Grand Ballroom</p>
                   <p className="text-champagne/80">Dinner & Dancing</p>
                 </div>
@@ -336,7 +336,7 @@ const EternalRomance = () => {
           >
             <h3 className="text-2xl font-script mb-4 gold-text">#EmilyAndJames2024</h3>
             <p className="text-champagne/80 max-w-lg mx-auto mb-6">
-              Thank you for being part of our special day. We can't wait to celebrate with you!
+              Thank you for being part of our engagement celebration. We can't wait to share this special moment with you!
             </p>
             <div className="bg-gold h-px w-24 mx-auto mb-6 opacity-50"></div>
             <p className="text-sm text-champagne/60">

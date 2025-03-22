@@ -95,6 +95,49 @@
     @apply bg-background text-foreground;
   }
 
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(125, 249, 255, 0.4);
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(125, 249, 255, 0.7);
+  }
+
+  /* Theme scrollbars */
+  .bg-navy::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.4);
+  }
+  
+  .bg-navy::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.7);
+  }
+  
+  .bg-deep-space::-webkit-scrollbar-thumb {
+    background: rgba(102, 51, 153, 0.4);
+  }
+  
+  .bg-deep-space::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 105, 180, 0.7);
+  }
+  
+  .bg-soft-cream::-webkit-scrollbar-thumb {
+    background: rgba(79, 121, 66, 0.4);
+  }
+  
+  .bg-soft-cream::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 121, 66, 0.7);
+  }
+
   .text-shadow {
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   }
